@@ -1,3 +1,5 @@
+import doctorsReducers from '../reducers/doctor'
+
 const userInitialState = {}
 const usersReducers = (state = userInitialState , action ) => {
     switch(action.type){

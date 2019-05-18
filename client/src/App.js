@@ -7,21 +7,28 @@ import Home from './components/layout/Home'
 import DoctorProfileShow from './components/doctor/profileShow'
 import { connect } from 'react-redux'
 import { isAuthenticated } from './components/commons/isAuth'
+import  Dashboard  from './components/layout/Dahboard'
+
 
 
 
 class App extends React.Component{
-  
+  constructor(props){
+    super(props)
+  }
   render(){
     return(
      
         <BrowserRouter>
            <div>
-        <Link to = "/">Home</Link>
-           { isAuthenticated(this.props.user) && (
+  
+           <Link to = "/home">Home</Link><br/>
+           
+        { isAuthenticated(this.props.user) && (
              <div>
-               logged in 
+            
                <Link to = "/users/logout">Logout</Link>
+               <Link to = "/dashboard">Dashboard</Link>
             </div>
            ) }
 
@@ -29,34 +36,24 @@ class App extends React.Component{
         { !isAuthenticated(this.props.user) && (
              <div> 
                <Link to = "/users/register">Register</Link>   
-               <Link to = "/users/login">Login</Link>
-                not logged in            
+               <Link to = "/users/login">Login</Link>        
               </div>
            ) }
-         
-         
-
-
-          <Switch>
-          <Route path = "/" component = {Home} exact = {true}/>
-          <Route path = "/profile" component = {DoctorProfileShow} />
-          <Route 
-            path = "/users/register" 
-            component = {Register} 
-            exact = {true}
-          />
-          <Route 
-            path =  "/users/login" 
-            component = {Login}
-            exact = {true}
-          />
-          <Route 
-            path =  "/users/logout" 
-            component={Logout} 
-            exact = {true}
-          />
+      <Switch>
+   
+    <Route path = "/users/login" component  = {Login} exact = {true}/>
+    <Route path = "/users/register" component ={Register} exact = {true}/>
+    <Route path  = "/home" component = {Home} exact = {true}/>
+    </Switch>
         
-          </Switch>
+                    
+                   
+           
+         
+         
+
+
+         
           </div>
         </BrowserRouter>
     
@@ -66,7 +63,8 @@ class App extends React.Component{
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user ,
+   doctors : state.doctors
   }
 }
 
