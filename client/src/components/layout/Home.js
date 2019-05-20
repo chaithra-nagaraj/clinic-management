@@ -1,30 +1,33 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { StartGetDoctors } from '../../redux/actions/doctors'
+
 
 
 class Home extends React.Component{
+
     constructor(props){
         super(props)
     }
+    componentDidMount(){
+        this.props.dispatch(StartGetDoctors())
+    }
+    
     render(){
         return(
+            
             <div>
-                <h2>home page..</h2>
-                {this.props.user.role == "doctor" ? 
-                <div>
-                    <h2>Welcome Dr.{this.props.user.username} </h2>
-                    <Link to = "/profile">My Profile |</Link>
-                    <Link>Recent patients |</Link>
-                    <Link  >Add Patient |</Link>
-                    <Link>Appointments </Link>
+                    Book an Appointment with our Doctors --
+            <ul>
+              {this.props.doctors.map(doctor => {
+                if(doctor.approved == true)
+                return <li key ={doctor._id}>{doctor.doctorId && (doctor.doctorId.username)}</li>
+                  // return  <li key ={doctor._id}>{doctor.doctorId.username}</li>
+              })}
 
-                </div>
-                    
-                    : 
-                    <h2>Welcome {this.props.user.username}</h2>
-                
-                }
+            </ul> 
+         
+           
                 
             </div>
         )
@@ -33,7 +36,8 @@ class Home extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        user : state.user
+        user : state.user ,
+        doctors : state.doctors
     }
 }
 

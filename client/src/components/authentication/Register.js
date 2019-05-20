@@ -30,13 +30,12 @@ class Register extends React.Component{
             password : this.state.password,
             role : this.state.role
         }
-        console.log(formData)
         axios.post('/users/register' , formData)
             .then((response) => {
                 this.setState(()=>({
                     username : '' , email : '' , password : '', notice : 'successfully registered !:) Taking you to the Login Page'
                 }))
-                setInterval(() => {
+                setTimeout(() => {
                     this.props.history.push('/users/login')
                 },2000);
             })

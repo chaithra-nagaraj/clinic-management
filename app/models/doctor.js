@@ -25,7 +25,16 @@ const doctorSchema = new Schema({
         {
             type : String
         }
-    ]
+    ],
+    approved : {
+        type : Boolean,
+        default : false
+    },
+    registrationNum : {
+        type : String,
+        required : true,
+        unique : true
+    }
 })
 
 const Doctor = mongoose.model('Doctor' , doctorSchema)

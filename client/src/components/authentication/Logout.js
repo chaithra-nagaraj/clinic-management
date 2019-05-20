@@ -3,6 +3,8 @@ import axios from '../../config/axios';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { StartRemoveUser } from '../../redux/actions/users';
+import { removeDoctor } from '../../redux/actions/doctor'
+import { removeDoctors } from '../../redux/actions/admin'
 
 
 class Logout extends React.Component{
@@ -12,6 +14,8 @@ class Logout extends React.Component{
     }
     componentDidMount(){
         this.props.dispatch(StartRemoveUser())
+        this.props.dispatch(removeDoctor())
+        this.props.dispatch(removeDoctors())
         console.log(this.props.user.username)
         this.props.history.push('/')
     }
@@ -28,7 +32,8 @@ class Logout extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        user : state.user
+        user : state.user,
+        doctor : state.doctor
     }
 }
 
