@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
-
 const Schema = mongoose.Schema
-const patientSchema = new Schema({
+
+const patientSchema = new Schema ({
     name : {
         type : String,
         required : true
@@ -15,20 +15,16 @@ const patientSchema = new Schema({
     email : {
         type : String
     },
-    purposeOfVisit : {
-        type : [String],
-        require : true 
-    },
-    description : {
-        type : String
+    bloodgroup : {
+         type : String,
+         required: true
     },
     createdDateAndTime : {
         type : Date,
         default : new Date().toLocaleDateString()
     },
 })
-
-const Patient = mongoose.model('Patient' , patientSchema)
+const Patient = mongoose.model('Patient',patientSchema)
 
 module.exports = {
     Patient

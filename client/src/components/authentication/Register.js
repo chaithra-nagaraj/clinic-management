@@ -41,39 +41,88 @@ class Register extends React.Component{
                 },2000);
             })
     }
+
     render(){
         return(
-            <div>
-                 {this.state.notice && this.state.notice}
+
+            <div className="container">
+                {this.state.notice && this.state.notice}
                 <form onSubmit = {this.handleSubmit}>
-                    <label>
-                        Username
-                        <input type = "text" value = {this.state.username} onChange = {this.handleChange} name = "username"/>
-                    </label><br/>
-                    <label>
-                        email
-                        <input type = "text" value = {this.state.email} onChange = {this.handleChange} name = "email"/>
-                    </label><br/>
-                    <label>
-                        password
-                        <input type = "password" value = {this.state.password} onChange = {this.handleChange} name = "password"/>
-                    </label><br/>
-                    <label>
-                        Are you a Doctor?
-                        <input type = "radio" name = "role" value = "doctor" onChange = {this.handleChange} name = "role"/>
-                    </label>
-                    <label>
-                        Are you a patient?
-                        <input type = "radio" name = "role" value = "patient" onChange = {this.handleChange} name = "role"/>
-                    </label>
+                <div className="row justify-content-center">
+                    <div className="col-md-6">
+                        <div className="card">
+                            <header className="card-header">
+                                <a href="/users/login" className="float-right btn btn-outline-primary mt-1">Log in</a>
+                                <h4 className="card-title mt-2">Sign up</h4>
+                            </header>
+                            <article className="card-body">
+                                <form>
+                                    <div className="form-row">
+                                        <div className="form-group">
+                                            <label>Username </label>   
+                                            <input type="text" className="form-control" 
+                                            
+                                            value = {this.state.username} onChange = {this.handleChange} 
+                                            name = "username" placeholder="Username" />
+                                            
+                                        </div> 
+                                        
+                                    </div> 
+                                    <div className="form-row">
+                                        <div className="form-group">
+                                            <label>Email address</label>
+                                            <input type="text" className="form-control"                                            
+                                            value = {this.state.email} onChange = {this.handleChange}
+                                             name = "email"  placeholder = "Email"
+                                            
+                                        />
+                                            <small className="form-text text-muted">We'll never share your email with anyone else.</small>
+                                        </div>
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group">
+                                            <label className="form-check form-check-inline">
+                                                <input className="form-check-input" type="radio" 
+                                                 name = "role" value = "doctor" 
+                                                 onChange = {this.handleChange} 
+                                                />
+                                                <span className="form-check-label"> Doctor </span>
+                                            </label>
+                                            <label className="form-check form-check-inline">
+                                                <input className="form-check-input" type="radio" 
+                                                name = "role" value = "patient" onChange = {this.handleChange}
+                                                />
+                                                <span className="form-check-label"> Patient</span>
+                                            </label>
+                                        </div> 
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group">
+                                            <label>Create password</label>
+                                            <input className="form-control" type="password" placeholder = "Password"/>
+                                        </div> 
+                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group">
+                                            <button type="submit" className="btn btn-primary btn-block"> Register  </button>
+                                        </div> 
+                                    
 
-                    
-                    
-                    <input type = "submit"/>
-                </form>
-            </div>
+                                    </div>   
+                                                                   
+                                </form>
+                            
+                            </article> 
+                   </div> 
+                    </div>
+
+            </div>  
+           
+            </form>
+        </div> 
+
+
         )
-    }
-}
-
+        }
+}                    
 export default Register

@@ -20,7 +20,6 @@ export const getUser = () => {
         axios.get('/users/account')
             .then(response => dispatch(addUser(response.data)))
             .catch(err => console.log(err))
-
     }
 }
 

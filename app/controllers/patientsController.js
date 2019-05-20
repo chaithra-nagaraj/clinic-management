@@ -23,6 +23,16 @@ router.post('/' , function(req,res){
             res.send(err)
         })
 })
+router.get('/:id' , function(req,res){
+    const id = req.params.id
+    Patient.findById(id)
+        .then(function(patient){
+            res.send(patient)
+        })
+        .catch(function(err){
+            res.send(err)
+        })
+})
 router.put('/:id' , function(req,res){
     const id = req.params.id
     const body = req.body
