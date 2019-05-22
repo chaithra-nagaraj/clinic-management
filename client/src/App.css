@@ -22,7 +22,14 @@
 .App-link {
   color: #61dafb;
 }
+.header-bar{
+  display: inherit;
+  padding-left: 5em;
+}
 
+.nav-item{
+  padding-right: 5em! important;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -30,4 +37,22 @@
   to {
     transform: rotate(360deg);
   }
+}
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+.text-center {
+  border-block-end-width: 1px;
+  padding-top: 3cm;
 }

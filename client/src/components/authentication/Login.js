@@ -37,9 +37,47 @@ class Login extends React.Component {
        //console.log(this.props.users.username)
        //console.log(this.props)
         return (
-            <div>
-                <h1>Login</h1>
-                <form onSubmit={this.handleSubmit}>
+            <div className = "text-center ">
+                
+                <form 
+                className="form-signin m-auto" 
+                 onSubmit = { this.handleSubmit}>
+                   
+                    <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+                    <label for="inputEmail" className="sr-only">Email address</label>
+                    <input
+                     type="email"
+                      id="inputEmail" 
+                      className="form-control" 
+                      placeholder="Email address" 
+                      required autofocus
+                      name = "email"
+                      value = {this.state.email}
+                      onChange = {this.handleChange}
+                      />
+                    <label for="inputPassword" className="sr-only">Password</label>
+                    <input
+                     type="password"
+                      id="inputPassword" 
+                      className="form-control"
+                      placeholder="Password" 
+                      required
+                      name = "password"
+                      value = {this.state.password}
+                      onChange = {this.handleChange}/>
+                    <div className="checkbox mb-3">
+                        {/* <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                        </label> */}
+                    </div>
+                    <button 
+                    className="btn btn-lg btn-primary btn-block"
+                     type="submit">
+                     Sign in
+                     </button>
+                    {/* <p className="mt-5 mb-3 text-muted">&copy; 2017-2019</p> */}
+                </form>
+                {/* <form onSubmit={this.handleSubmit}>
                     <label>
                         email :
                         <input type='email' value={this.state.email} name='email' onChange={this.handleChange}/>
@@ -49,7 +87,7 @@ class Login extends React.Component {
                         <input type='password' value={this.state.password} name='password' onChange={this.handleChange}/>
                     </label> <br/>
                     <input type='submit' />
-                </form>
+                </form> */}
 
             </div>
         )

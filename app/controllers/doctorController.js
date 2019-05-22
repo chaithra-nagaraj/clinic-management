@@ -32,7 +32,7 @@ router.post('/' , authenticateUser ,  function(req,res){
 
 router.get('/:id' , authenticateUser , function(req, res){
     const id = req.params.id
-    Doctor.findOne({_id: id} , {doctorId : req.user._id}).populate('doctorId')
+    Doctor.findOne({_id: id}).populate('doctorId')
         .then(function(doctor){
             res.send(doctor)
         })

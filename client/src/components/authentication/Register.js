@@ -17,6 +17,7 @@ class Register extends React.Component{
 
     handleChange(e){
         e.persist()
+        console.log(e.target.name)
         this.setState(()=>({
             [e.target.name] : e.target.value
         }))
@@ -42,6 +43,7 @@ class Register extends React.Component{
     }
     render(){
         return(
+            <main role="main" class="container">
             <div>
                  {this.state.notice && this.state.notice}
                 <form onSubmit = {this.handleSubmit}>
@@ -71,6 +73,7 @@ class Register extends React.Component{
                     <input type = "submit"/>
                 </form>
             </div>
+            </main>
         )
     }
 }

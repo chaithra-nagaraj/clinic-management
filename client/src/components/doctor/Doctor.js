@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
 import { Link } from 'react-router-dom'
 
 class Doctor extends React.Component{
@@ -7,8 +8,8 @@ class Doctor extends React.Component{
         return(
             <div>
             <Link to = "/profile">My Profile |</Link>
-          <Link >Recent patients |</Link>
-          <Link  >Add Patient |</Link>
+          <Link to = "/patientRecords" > Patient Records|</Link>
+          <Link to = "/category"  >Add Patient |</Link>
           <Link>Appointments </Link>
          
 

@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import './App.css'
+
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Provider } from 'react-redux'
 import { getUser} from './redux/actions/users'
 import { StartGetDoctor } from './redux/actions/doctor'
@@ -17,9 +20,9 @@ store.subscribe(()=> {
 console.log(store.getState())
 
 
-// store.dispatch(getUser())
+store.dispatch(getUser())
 store.dispatch(StartGetDoctors())
-// store.dispatch(StartGetDoctor())
+ store.dispatch(StartGetDoctor())
 
 const app = (
     <Provider store = {store}>
