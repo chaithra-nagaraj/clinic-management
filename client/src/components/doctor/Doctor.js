@@ -14,7 +14,8 @@ class Doctor extends React.Component{
          
 
           <h2>Welcome Dr.{this.props.user.username} </h2><br/>
-          <h4>Please go ahead and complete your profile for further registration </h4>
+          {(!this.props.doctor && <h4>Please go ahead and complete your profile for further registration </h4>  )  
+           }
  
             </div>
         )
@@ -23,7 +24,8 @@ class Doctor extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        user : state.user
+        user : state.user,
+        doctor : state.user
     }
 }
 

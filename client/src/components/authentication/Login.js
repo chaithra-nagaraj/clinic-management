@@ -1,103 +1,85 @@
-import React from 'react'
+// 
+
+import React from "react";
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
+import { StartLogin } from '../../redux/actions/users'
 import { connect } from 'react-redux'
-import { StartLogin } from '../../redux/actions/users';
+ 
 
-class Login extends React.Component {
+class Login extends React.Component{
     constructor(props){
-        super(props)
-        this.state={
-            email:'',
-            password:'',
-            notice:'',
-            redirect:false
+                super(props)
+                this.state = {
+                    email : '',
+                    password : '', 
+                }
+            }
 
-        }
-        this.handleChange=this.handleChange.bind(this)
-        this.handleSubmit=this.handleSubmit.bind(this)
-    }
-    handleChange(e){
-        e.persist()
-        this.setState(()=> ({
-            [e.target.name]:e.target.value
-        }))
-    }
-    handleSubmit(e){
-        e.preventDefault()
-        const formData={
-            email:this.state.email,
-            password:this.state.password
-        }
-        this.props.dispatch(StartLogin(formData, this.props))
-        // this.props.handleIsAuthenticated(true)
-        // this.props.props.history.push('/')
+    handleChange = (e) =>{
+      console.log(e.target)
+                e.persist()
+                this.setState(()=>({
+                    [e.target.name] : e.target.value
+                }))
+            }
 
-    }
-    
+            handleSubmit = (e) => {
+                        e.preventDefault()
+                        const formData = {
+                            email : this.state.email,
+                            password : this.state.password,
+                           
+                        }
+                 this.props.dispatch(StartLogin(formData, this.props))
+            }
     render(){
-       //console.log(this.props.users.username)
-       //console.log(this.props)
         return (
-            <div className = "text-center ">
-                
-                <form 
-                className="form-signin m-auto" 
-                 onSubmit = { this.handleSubmit}>
-                   
-                    <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-                    <label for="inputEmail" className="sr-only">Email address</label>
-                    <input
-                     type="email"
-                      id="inputEmail" 
-                      className="form-control" 
-                      placeholder="Email address" 
-                      required autofocus
-                      name = "email"
-                      value = {this.state.email}
-                      onChange = {this.handleChange}
+          <MDBCard className="container">
+            <MDBCardBody>
+            <form>
+                    <p className="h5 text-center mb-4">Sign in</p>
+                    <div className="grey-text">
+                      <MDBInput
+                        label="Type your email"
+                        icon="envelope"
+                        group
+                        type="email"
+                        validate
+                        error="wrong"
+                        success="right"
+                        name = "email"
+                        value = {this.state.email}
+                        onChange = {this.handleChange}
                       />
-                    <label for="inputPassword" className="sr-only">Password</label>
-                    <input
-                     type="password"
-                      id="inputPassword" 
-                      className="form-control"
-                      placeholder="Password" 
-                      required
-                      name = "password"
-                      value = {this.state.password}
-                      onChange = {this.handleChange}/>
-                    <div className="checkbox mb-3">
-                        {/* <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                        </label> */}
+                      <MDBInput
+                        label="Type your password"
+                        icon="lock"
+                        group
+                        type="password"
+                        validate
+                        value = {this.state.password}
+                        onChange = {this.handleChange}
+                        name = "password"
+                      />
                     </div>
-                    <button 
-                    className="btn btn-lg btn-primary btn-block"
-                     type="submit">
-                     Sign in
-                     </button>
-                    {/* <p className="mt-5 mb-3 text-muted">&copy; 2017-2019</p> */}
-                </form>
-                {/* <form onSubmit={this.handleSubmit}>
-                    <label>
-                        email :
-                        <input type='email' value={this.state.email} name='email' onChange={this.handleChange}/>
-                    </label><br/>
-                    <label>
-                        password :
-                        <input type='password' value={this.state.password} name='password' onChange={this.handleChange}/>
-                    </label> <br/>
-                    <input type='submit' />
-                </form> */}
+                    <div className="text-center">
+                      <MDBBtn onClick = {this.handleSubmit}>Login</MDBBtn>
+                    </div>
+                  </form>
+            </MDBCardBody>
+          </MDBCard>
 
-            </div>
-        )
+                 
+            
+          );
     }
-} 
+ 
+};
 
-const mapStateToProps=(state) => {
-    // console.log(state)
-    return {
-        user:state.user
-    }
+const mapStateToProps = (state) => {
+  return {
+    user : state.user
+  }
 }
-export default connect(mapStateToProps)(Login)
+
+export default connect(mapStateToProps)(Login);

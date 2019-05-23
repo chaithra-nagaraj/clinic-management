@@ -32,10 +32,7 @@ router.delete('/:id' , authenticateUser ,  function(req , res){
     const id = req.params.id
     Doctor.findOneAndDelete({_id : id})
         .then(function(doctor){
-            User.findOneAndDelete({_id : doctor.doctorId})
-                .then(function(user){
-                    res.send({notice : "deleted the user successfully !!"})
-                })
+            res.send({notice : 'doctor deleted succesfully'})
         })
         .catch(function(err){
             res.send(err)
