@@ -1,8 +1,8 @@
 import React from 'react'
-import axios from '../../config/axios'
+//import axios from '../../config/axios'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import Select from 'react-select'
+//import Select from 'react-select'
 import { StartGetDoctor , StartAddDoctor, StartEditDoctor } from '../../redux/actions/doctor'
 
 class DoctorProfileShow extends React.Component{

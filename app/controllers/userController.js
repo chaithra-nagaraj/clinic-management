@@ -7,6 +7,11 @@ const { authenticateUser } = require('../middlewares/authenticateUser')
 
 
 router.post('/register' , function(req,res){
+
+    const { username, email, password } = req.body
+    if(!username || !email || !password) {
+        res.send({message: "Its cannot be empty"})
+    }
      const body = req.body
      const user = new User(body)
     User.countDocuments({},function(err, count){

@@ -55,16 +55,6 @@ router.delete('/:id', function(req,res){
         })
 })
 
-router.get('/:id' , function(req,res){
-    const id = req.params.id
-    Patient.findById(id)
-        .then(function(patient){
-            res.send(patient)
-        })
-        .catch(function(err){
-            res.send(err)
-        })
-})
 
 module.exports = {
     patientRouter : router

@@ -30,15 +30,23 @@ class Register extends React.Component{
             password : this.state.password,
             role : this.state.role
         }
+        console.log(formData)
         axios.post('/users/register' , formData)
             .then((response) => {
+                if(response.data.message){
+                    this.setState(() => ({
+                        notice: response.data.message
+                    }))
+                } else {
                 this.setState(()=>({
                     username : '' , email : '' , password : '', notice : 'successfully registered !:) Taking you to the Login Page'
                 }))
                 setTimeout(() => {
                     this.props.history.push('/users/login')
                 },2000);
-            })
+            }
+        })
+        .catch(err=>console.log(err))
     }
 
     render(){
@@ -55,7 +63,7 @@ class Register extends React.Component{
                                 <h4 className="card-title mt-2">Sign up</h4>
                             </header>
                             <article className="card-body">
-                                <form>
+                            
                                     <div className="form-row">
                                         <div className="form-group">
                                             <label>Username </label>   
@@ -109,7 +117,6 @@ class Register extends React.Component{
 
                                     </div>   
                                                                    
-                                </form>
                             
                             </article> 
                    </div> 

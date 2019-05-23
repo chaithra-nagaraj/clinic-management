@@ -19,9 +19,9 @@ store.subscribe(()=> {
 console.log(store.getState())
 
 
-// store.dispatch(getUser())
+store.dispatch(getUser())
 store.dispatch(StartGetDoctors())
-// store.dispatch(StartGetDoctor())
+ store.dispatch(StartGetDoctor())
 
 const app = (
     <Provider store = {store}>
