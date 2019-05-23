@@ -44,6 +44,8 @@ router.get('/:id' , authenticateUser , function(req, res){
 router.put('/:id' , authenticateUser , function(req, res){
     const id = req.params.id
     const body = req.body
+    console.log(id , body)
+
     Doctor.findOneAndUpdate({_id : id} , {$set : body} , {runValidators : true , new : true} )
         .then(function(){
             User.findOneAndUpdate({ _id : req.user._id} , { $set : body} , {runValidators : true , new : true} )

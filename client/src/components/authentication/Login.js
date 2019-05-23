@@ -1,77 +1,85 @@
-import React from 'react'
-import axios from '../../config/axios'
-import { connect } from 'react-redux'
+// 
+
+import React from "react";
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
 import { StartLogin } from '../../redux/actions/users'
+import { connect } from 'react-redux'
+ 
 
 class Login extends React.Component{
     constructor(props){
-        super(props)
-        this.state = {
-            email : '',
-            password: '',
-            redirect : false,
-            notice : ''
-        }
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-    }
+                super(props)
+                this.state = {
+                    email : '',
+                    password : '', 
+                }
+            }
 
-    handleChange(e){
-        e.persist()
-        this.setState(() =>({
-            [e.target.name] : e.target.value
-        }))
-    }
+    handleChange = (e) =>{
+      console.log(e.target)
+                e.persist()
+                this.setState(()=>({
+                    [e.target.name] : e.target.value
+                }))
+            }
 
-    handleSubmit(e){
-        e.preventDefault()
-        const formData = {
-            email : this.state.email,
-            password : this.state.password
-        }
-        this.props.dispatch(StartLogin(formData, this.props))
-    }
+            handleSubmit = (e) => {
+                        e.preventDefault()
+                        const formData = {
+                            email : this.state.email,
+                            password : this.state.password,
+                           
+                        }
+                 this.props.dispatch(StartLogin(formData, this.props))
+            }
     render(){
-        
-        console.log(this.props.users.username)
-        return(
-            <div>
-                <h2>Login</h2>
-                <form onSubmit = {this.handleSubmit}>
-                    <label>
-                        Email-id
-                        <input type = "text" onChange = {this.handleChange}
-                        value = {this.state.email} name = "email"/>
-                    </label><br/>
-                    <label>
-                        password
-                        <input type = "password" onChange = {this.handleChange}
-                        value = {this.state.password} name = "password"/>
-                    </label><br/>
-                    <input type = "submit"/>
-                </form>
-            </div>
-        )
+        return (
+          <MDBCard className="container">
+            <MDBCardBody>
+            <form>
+                    <p className="h5 text-center mb-4">Sign in</p>
+                    <div className="grey-text">
+                      <MDBInput
+                        label="Type your email"
+                        icon="envelope"
+                        group
+                        type="email"
+                        validate
+                        error="wrong"
+                        success="right"
+                        name = "email"
+                        value = {this.state.email}
+                        onChange = {this.handleChange}
+                      />
+                      <MDBInput
+                        label="Type your password"
+                        icon="lock"
+                        group
+                        type="password"
+                        validate
+                        value = {this.state.password}
+                        onChange = {this.handleChange}
+                        name = "password"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <MDBBtn onClick = {this.handleSubmit}>Login</MDBBtn>
+                    </div>
+                  </form>
+            </MDBCardBody>
+          </MDBCard>
+
+                 
+            
+          );
     }
-}
+ 
+};
+
 const mapStateToProps = (state) => {
-    return{
-        users: state.user
-    }
+  return {
+    user : state.user
+  }
 }
-export default connect(mapStateToProps)(Login)
 
-
-// import React from 'react'
-// import axios from '../../config/axios'
-
-// class Login extends React.Component{
-//     redner(){
-//         return(
-//             <div>
-//                 Login with us
-//             </div>
-//         )
-//     }
-
-// export default Login
+export default connect(mapStateToProps)(Login);

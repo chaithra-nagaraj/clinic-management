@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const router = express.Router()
 const { User } = require('../models/user')
+const { Doctor } = require('../models/doctor')
 const { authenticateUser } = require('../middlewares/authenticateUser')
 
 
@@ -30,8 +31,8 @@ router.post('/login' , function(req,res) {
         .then(function(user) {
            return user.generateToken()  
         })
-        .then(function(token){
-            res.send({token})
+        .then(function(user){
+            res.send(user)
         }) 
         .catch(function(err) {
             res.send(err)
@@ -48,6 +49,16 @@ router.get('/' ,  function(req,res){
         .catch(function(err){
             res.send(err)
         })
+})
+
+router.get('/doctor' , authenticateUser , function(req , res){
+    Doctor.findOne({doctorId : req.user._id})
+      .then(function(doctor){
+        res.send(doctor)
+      })
+      .catch(function(err){
+          res.send(err)
+      })
 })
 
 

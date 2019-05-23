@@ -103,7 +103,13 @@ userSchema.methods.generateToken = function(){
     user.tokens.push({token})
     return user.save()
         .then(function(user){
-            return Promise.resolve(token)
+            return Promise.resolve({
+                user : {
+                _id : user._id ,
+                username : user.username,
+                role : user.role ,
+                email : user.email
+            },token})
         })
         .catch(function(err){
             return Promise.reject(err)

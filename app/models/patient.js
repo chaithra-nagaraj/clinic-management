@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-
+const { Category } = require('./category')
+const { Doctor } = require('./doctor')
 const Schema = mongoose.Schema
 const patientSchema = new Schema({
     name : {
@@ -15,17 +16,30 @@ const patientSchema = new Schema({
     email : {
         type : String
     },
-    purposeOfVisit : {
-        type : [String],
-        require : true 
+    bloodGroup : {
+        type : String ,
+        required : true
     },
-    description : {
-        type : String
+    dateOfBirth : {
+        type : String ,
+        required : true
     },
-    createdDateAndTime : {
-        type : Date,
-        default : new Date().toLocaleDateString()
+    age : {
+        type : Number,
+        required : true
     },
+    category : {
+        type : Schema.Types.ObjectId,
+        ref : 'Category'
+    },
+    doctorId : {
+        type : Schema.Types.ObjectId ,
+        ref : 'Doctor'
+    }
+    // createdDateAndTime : {
+    //     type : Date,
+    //     default : new Date().toLocaleDateString()
+    // },
 })
 
 const Patient = mongoose.model('Patient' , patientSchema)
