@@ -92,7 +92,7 @@ class DoctorProfileShow extends React.Component{
                     </label> */}
                 </form>
 
-                <Link to = "/home"> Back </Link>
+               <Link to = "/dashboard"> Back </Link>
             </div>
         )
     }

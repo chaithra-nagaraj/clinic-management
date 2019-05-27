@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
 import { Link } from 'react-router-dom'
 
 class Doctor extends React.Component{
@@ -7,13 +8,14 @@ class Doctor extends React.Component{
         return(
             <div>
             <Link to = "/profile">My Profile |</Link>
-          <Link >Recent patients |</Link>
-          <Link  >Add Patient |</Link>
+          <Link to = "/patientRecords" > Patient Records|</Link>
+          <Link to = "/category"  >Add Patient |</Link>
           <Link>Appointments </Link>
          
 
           <h2>Welcome Dr.{this.props.user.username} </h2><br/>
-          <h4>Please go ahead and complete your profile for further registration </h4>
+          {(!this.props.doctor && <h4>Please go ahead and complete your profile for further registration </h4>  )  
+           }
  
             </div>
         )
@@ -22,7 +24,8 @@ class Doctor extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        user : state.user
+        user : state.user,
+        doctor : state.user
     }
 }
 

@@ -1,20 +1,17 @@
 const mongoose = require('mongoose')
-
+const { Doctor } = require('./doctor') 
 const Schema = mongoose.Schema
 const categorySchema = new Schema({
-
-    name : {
-        type: [string]
+    category : {
+        type : String
     },
-    patientId : {
-        type: Schema.Types.ObjectId,
-        ref: 'patient'
-    },
-    
+    doctorId : {
+        type : Schema.Types.ObjectId,
+        ref : 'Doctor'
+    }
 })
 
 const Category = mongoose.model('Category' , categorySchema)
-
 module.exports = {
     Category
 }
