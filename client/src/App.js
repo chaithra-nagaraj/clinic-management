@@ -88,10 +88,10 @@ import DoctorProfileShow from './components/doctor/profileShow'
 import { connect } from 'react-redux'
 import { isAuthenticated } from './components/commons/isAuth'
 import Dashboard from './components/layout/Dashboard'
-// import  Patient  from './components/patient/Patient'
-// import Category from './components/category/Category'
-// import ListCategories from './components/patient/ListCategories'
-// import ListPatients from './components/patient/ListPatients'
+import  Patient  from './components/patient/Patient'
+import Category from './components/category/Category'
+import ListCategories from './components/patient/ListCategories'
+import ListPatients from './components/patient/ListPatients'
 
 
 
@@ -170,18 +170,11 @@ class App extends React.Component {
             <Route path="/dashboard" component={Dashboard} exact={true} />
             <Route path="/profile" component={DoctorProfileShow} exact={true} />
             <Route path="/home" component={Home} exact={true} />
-            {/* <Route path = "/addPatient/:id" component = {Patient} exact = {true}/>
-    <Route path = "/category" component   = {Category} exact = {true}/>
-    <Route path = "/patientRecords" component = {ListCategories} exact = {true}/>
-    <Route path = "/patients/:id" component = {ListPatients} exact = {true}/> */}
+            <Route path = "/addPatient/:id" component = {Patient} exact = {true}/>
+            <Route path = "/category" component   = {Category} exact = {true}/>
+            <Route path = "/patientRecords" component = {ListCategories} exact = {true}/>
+            <Route path = "/patients/:id" component = {ListPatients} exact = {true}/>
           </Switch>
-
-
-
-
-
-
-
 
 
         </div>
